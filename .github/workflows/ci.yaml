@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --no-cache-dir uv~=0.2.30
+          pip install --no-cache-dir uv~=0.2.33
           uv pip install --requirement pyproject.toml --extra test --extra cov --no-cache
   pre-commit:
     runs-on: ubuntu-latest

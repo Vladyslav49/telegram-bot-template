@@ -7,7 +7,7 @@ WORKDIR /app
 COPY pyproject.toml .
 
 RUN python -m venv /opt/venv && \
-    pip install --no-cache-dir uv~=0.2.30 && \
+    pip install --no-cache-dir uv~=0.2.33 && \
     uv pip install --requirement pyproject.toml --extra dev --no-cache
 
 FROM python:3.12.4-alpine
