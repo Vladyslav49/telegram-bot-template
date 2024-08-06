@@ -1,0 +1,9 @@
+[run]
+omit =
+    */entry_points/*
+    */migrations/env.py
+    */presentation/*
+
+[report]
+exclude_lines =
+    raise NotImplementedError

@@ -1,0 +1,41 @@
+services:
+  bot:
+    build: .
+    restart: on-failure
+    env_file: .env
+    depends_on:
+      - migration
+      - redis
+  migration:
+    build: .
+    restart: on-failure
+    env_file: .env
+    depends_on:
+      database:
+        condition: service_healthy
+    command: [ "alembic", "upgrade", "head" ]
+  database:
+    image: postgres:16.3-alpine
+    restart: on-failure
+    env_file: .env
+    volumes:
+      - type: volume
+        source: database_data
+        target: /var/lib/postgresql/data/
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
+      interval: 2s
+      timeout: 60s
+      retries: 10
+      start_period: 5s
+  redis:
+    image: redis:7.4-alpine
+    restart: on-failure
+    volumes:
+      - type: volume
+        source: redis_data
+        target: /data
+
+volumes:
+  database_data:
+  redis_data:

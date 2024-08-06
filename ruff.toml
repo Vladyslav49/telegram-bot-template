@@ -1,0 +1,34 @@
+force-exclude = true
+line-length = 79
+src = ["src"]
+target-version = "py312"
+
+[lint]
+select = ["ALL"]
+ignore = [
+    "D",  # docs
+    "ANN101",  # missing-type-self
+    "FA102",  # future-required-type-annotation
+    "TCH001",  # typing-only-first-party-import
+    "TCH002",  # typing-only-third-party-import
+    "A001",  # builtin-variable-shadowing
+    "A002",  # builtin-argument-shadowing
+    "S101",  # assert
+    "ANN401",  # any-type
+    "PLR0913",  # too-many-arguments
+    "CPY001",  # missing-copyright-notice
+    # should be ignored for the formatter
+    "COM812",  # missing-trailing-comma
+    "ISC001",  # single-line-implicit-string-concatenation
+]
+
+[lint.per-file-ignores]
+"src/telegram_bot_template/infrastructure/db/migrations/**.py" = [
+    "INP001",  # implicit-namespace-package
+]
+"tests/**.py" = [
+    "INP001",  # implicit-namespace-package
+]
+
+[lint.flake8-tidy-imports]
+ban-relative-imports = "all"

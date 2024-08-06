@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/telegram_bot_template"]
+
+[project]
+name = "telegram_bot_template"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.12,<4.0.0"
+dependencies = [
+    "redis~=5.0.8",
+    # bot
+    "aiogram~=3.10.0",
+    "aiogram-dialog~=2.1.0",
+    # i18n
+    "aiogram-i18n~=1.4.0",
+    "fluent-runtime~=0.4.0",
+    # broadcaster
+    "aiogram-broadcaster~=0.5.0",
+    # db
+    "psycopg[binary]~=3.2.1",
+    "sqlalchemy~=2.0.32",
+    # di
+    "dishka~=1.2.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "testcontainers~=4.7.2",
+    "tomlkit~=0.13.0",
+    # pytest
+    "pytest~=8.3.2",
+    "pytest-asyncio~=0.23.8",
+    "pytest-randomly~=3.15.0",
+]
+dev = [
+    "pre-commit~=3.8.0",
+    "aiogram-cli~=1.1.0",
+    # migrations
+    "alembic~=1.13.2",
+    "ruff~=0.5.6", # required for lint and format hooks in alembic
+]
+cov = [
+    "pytest-cov~=5.0.0",
+]
+
+[[project.authors]]
+name = "Vladyslav Timofeev"
+email = "Timofeevvladyslav49@gmail.com"
+
+[tool.vulture]
+paths = ["src", "tests"]
+exclude = ["migrations/versions"]
+ignore_decorators = ["@ROUTER.message"]
+ignore_names = [
+    "kwargs",
+    # contextmanager
+    "exc_type",
+    "exc_val",
+    "traceback",
+    # pydantic
+    "model_config",
+    # sqlalchemy
+    "__tablename__",
+    # aiogram-dialog
+    "message_input",
+    "button",
+    "widget",
+    "_render_text",
+]

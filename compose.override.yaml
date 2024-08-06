@@ -1,0 +1,15 @@
+services:
+  bot:
+    volumes:
+      - type: bind
+        source: src
+        target: /app/src
+    entrypoint: aiogram
+    command: >
+      run polling
+      --token $TELEGRAM_BOT_API_TOKEN
+      --skip-updates
+      --log-level INFO
+      --reload
+      --parse-mode HTML
+      telegram_bot_template.entry_points.bot:dp
