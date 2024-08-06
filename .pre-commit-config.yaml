@@ -25,7 +25,6 @@ repos:
         args:
           - --python-executable
           - .venv/bin/python
-          - --install-types
           - --enable-incomplete-feature=NewGenericSyntax
         additional_dependencies:
           - pydantic
