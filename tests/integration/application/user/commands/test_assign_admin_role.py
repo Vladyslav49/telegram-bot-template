@@ -19,6 +19,25 @@ from telegram_bot_template.domain.exceptions.access import AccessDenied
 from telegram_bot_template.domain.value_objects.user_id import UserId
 
 
+@pytest.mark.usefixtures("make_user_admin")
+async def test_assign_admin_role(
+    container: AsyncContainer, telegram_id: int
+) -> None:
+    create_user = await container.get(CreateUser)
+    assign_admin_role = await container.get(AssignAdminRole)
+    user_reader = await container.get(UserReader)  # type: ignore[type-abstract]
+
+    user_id = await create_user(
+        CreateUserInputDTO(telegram_id=telegram_id + 1),
+    )
+    await assign_admin_role(
+        AssignAdminRoleInputDTO(user_id=user_id.to_raw()),
+    )
+    user = await user_reader.get_by_id(user_id)
+
+    assert user.role is UserRole.ADMINISTRATOR
+
+
 async def test_assign_admin_role_access_denied(
     container: AsyncContainer, user_id: UserId
 ) -> None:
@@ -52,22 +71,3 @@ async def test_assign_admin_role_user_not_exists(
         await assign_admin_role(
             AssignAdminRoleInputDTO(user_id=123),
         )
-
-
-@pytest.mark.usefixtures("make_user_admin")
-async def test_assign_admin_role(
-    container: AsyncContainer, telegram_id: int
-) -> None:
-    create_user = await container.get(CreateUser)
-    assign_admin_role = await container.get(AssignAdminRole)
-    user_reader = await container.get(UserReader)  # type: ignore[type-abstract]
-
-    user_id = await create_user(
-        CreateUserInputDTO(telegram_id=telegram_id + 1),
-    )
-    await assign_admin_role(
-        AssignAdminRoleInputDTO(user_id=user_id.to_raw()),
-    )
-    user = await user_reader.get_by_id(user_id)
-
-    assert user.role is UserRole.ADMINISTRATOR
