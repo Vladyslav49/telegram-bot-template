@@ -27,7 +27,7 @@ jobs:
           key: python-${{ runner.os }}-hashFiles("pyproject.toml")-3.12.4-uv
 
       - name: Install dependencies
-        run: uv pip install --requirement pyproject.toml --all-extras --no-cache
+        run: uv pip install . --all-extras --no-cache
   pre-commit:
     needs: build
     runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ jobs:
           key: python-${{ runner.os }}-hashFiles("pyproject.toml")-3.12.4-uv
 
       - name: Install dependencies
-        run: uv pip install --requirement pyproject.toml --all-extras --no-cache
+        run: uv pip install . --all-extras --no-cache
 
       - name: Run pre-commit
         run: pre-commit
@@ -76,7 +76,7 @@ jobs:
           key: python-${{ runner.os }}-hashFiles("pyproject.toml")-3.12.4-uv
 
       - name: Install dependencies
-        run: uv pip install --requirement pyproject.toml --all-extras --no-cache
+        run: uv pip install . --all-extras --no-cache
 
       - name: Run tests
         run: pytest --cov=src --cov-report=xml
