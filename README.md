@@ -34,5 +34,5 @@
 
 4. Start the Docker containers:
    ```bash
-   docker compose up
+   docker compose -f compose.yaml up --build
    ```
