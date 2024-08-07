@@ -1,6 +1,6 @@
 from typing import Final
 
-from aiogram import Bot, Router
+from aiogram import Bot, Router, html
 from aiogram.filters import Command, CommandObject
 from aiogram.types import Message
 from aiogram_broadcaster import Broadcaster
@@ -36,7 +36,7 @@ async def on_broadcast(
         return
 
     mailer = await broadcaster.create_mailer(
-        TextContent(text=command.args),
+        TextContent(text=html.quote(command.args)),
         chats=[telegram_id.to_raw() for telegram_id in telegram_ids],
         bot=bot,
     )
