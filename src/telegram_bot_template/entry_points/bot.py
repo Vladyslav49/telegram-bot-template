@@ -124,7 +124,7 @@ async def close_container(container: AsyncContainer) -> None:
     await container.close()
 
 
-dp: Final = get_dispatcher()
+DISPATCHER: Final = get_dispatcher()
 
 
 def main() -> None:
@@ -133,7 +133,7 @@ def main() -> None:
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
 
-    dp.run_polling(bot)
+    DISPATCHER.run_polling(bot)
 
 
 if __name__ == "__main__":

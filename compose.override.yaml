@@ -12,4 +12,4 @@ services:
       --log-level INFO
       --reload
       --parse-mode HTML
-      telegram_bot_template.entry_points.bot:dp
+      telegram_bot_template.entry_points.bot:DISPATCHER
