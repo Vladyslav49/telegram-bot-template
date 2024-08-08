@@ -124,7 +124,7 @@ async def close_container(container: AsyncContainer) -> None:
     await container.close()
 
 
-dp = get_dispatcher()
+dp: Final = get_dispatcher()
 
 
 def main() -> None:
