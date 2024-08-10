@@ -54,7 +54,7 @@ email = "Timofeevvladyslav49@gmail.com"
 
 [tool.vulture]
 paths = ["src", "tests"]
-exclude = ["migrations/versions"]
+exclude = ["src/telegram_bot_template/infrastructure/db/migrations/versions"]
 ignore_decorators = ["@ROUTER.message"]
 ignore_names = [
     "kwargs",
