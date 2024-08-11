@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from telegram_bot_template.application.common.exceptions import SaverError
 from telegram_bot_template.domain.entities.user import User
-from telegram_bot_template.domain.enums.user import UserRole
+from telegram_bot_template.domain.enums.user_role import UserRole
 from telegram_bot_template.domain.value_objects.telegram_id import TelegramId
 from telegram_bot_template.infrastructure.db.gateways.user import UserSaverImpl
 

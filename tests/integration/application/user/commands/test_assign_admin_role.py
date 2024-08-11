@@ -14,7 +14,7 @@ from telegram_bot_template.application.user.exceptions import (
     UserAlreadyHasAdminRoleError,
     UserIsNotExistsError,
 )
-from telegram_bot_template.domain.enums.user import UserRole
+from telegram_bot_template.domain.enums.user_role import UserRole
 from telegram_bot_template.domain.exceptions.access import AccessDenied
 from telegram_bot_template.domain.value_objects.user_id import UserId
 

@@ -1,6 +1,6 @@
 import pytest
 
-from telegram_bot_template.domain.enums.user import UserRole
+from telegram_bot_template.domain.enums.user_role import UserRole
 from telegram_bot_template.domain.services.user import UserService
 from telegram_bot_template.domain.value_objects.telegram_id import TelegramId
 

@@ -3,7 +3,7 @@ from contextlib import AbstractContextManager, nullcontext
 import pytest
 
 from telegram_bot_template.domain.entities.user import User
-from telegram_bot_template.domain.enums.user import UserRole
+from telegram_bot_template.domain.enums.user_role import UserRole
 from telegram_bot_template.domain.exceptions.access import AccessDenied
 from telegram_bot_template.domain.services.access import AccessService
 from telegram_bot_template.domain.value_objects.telegram_id import TelegramId

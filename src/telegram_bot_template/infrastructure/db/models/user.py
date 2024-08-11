@@ -4,7 +4,7 @@ from sqlalchemy import BigInteger, UniqueConstraint
 from sqlalchemy.dialects.postgresql import ENUM
 from sqlalchemy.orm import Mapped, mapped_column
 
-from telegram_bot_template.domain.enums.user import UserRole
+from telegram_bot_template.domain.enums.user_role import UserRole
 from telegram_bot_template.infrastructure.db.models.base import Base
 
 USER_ROLE_ENUM: Final = ENUM(
