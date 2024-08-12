@@ -1,9 +1,9 @@
 import pytest
 
-from parser_bot.domain.entities.user import User
-from parser_bot.domain.enums.user_role import UserRole
-from parser_bot.domain.services.user import UserService
-from parser_bot.domain.value_objects.telegram_id import TelegramId
+from telegram_bot_template.domain.entities.user import User
+from telegram_bot_template.domain.enums.user_role import UserRole
+from telegram_bot_template.domain.services.user import UserService
+from telegram_bot_template.domain.value_objects.telegram_id import TelegramId
 
 
 @pytest.fixture(scope="module")
