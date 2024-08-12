@@ -12,6 +12,7 @@ def user_service() -> UserService:
 
 def test_create(user_service: UserService) -> None:
     telegram_id = TelegramId(1)
+
     user = user_service.create(telegram_id=telegram_id)
 
     assert user.telegram_id == telegram_id
