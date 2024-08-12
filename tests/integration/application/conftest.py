@@ -120,7 +120,7 @@ def _run_downgrade(connection: Connection, config: AlembicConfig) -> None:
     downgrade(config, "base")
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="package")
 def telegram_id() -> int:
     return 1111111111
 
