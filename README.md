@@ -2,7 +2,7 @@
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
-[![Python](https://img.shields.io/badge/python-3.12.4-blue)](https://www.python.org/downloads)
+[![Python](https://img.shields.io/badge/python-3.12.5-blue)](https://www.python.org/downloads)
 [![codecov](https://codecov.io/gh/Vladyslav49/telegram-bot-template/branch/develop/graph/badge.svg?token=2VLCKDIN0B)](https://codecov.io/gh/Vladyslav49/telegram-bot-template)
 
 ## 🛠️ Tech Stack

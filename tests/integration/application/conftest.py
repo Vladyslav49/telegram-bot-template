@@ -45,7 +45,7 @@ from telegram_bot_template.infrastructure.db.config import (
 @pytest.fixture(scope="package")
 def connection_url() -> Iterator[str]:
     with PostgresContainer(
-        image="postgres:16.2-alpine", driver="psycopg"
+        image="postgres:16.4-alpine", driver="psycopg"
     ) as postgres:
         yield postgres.get_connection_url()
 

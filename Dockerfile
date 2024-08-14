@@ -1,4 +1,4 @@
-FROM python:3.12.4-alpine AS dependencies
+FROM python:3.12.5-alpine AS dependencies
 
 ENV PATH="/opt/venv/bin:$PATH"
 
@@ -7,10 +7,10 @@ WORKDIR /app
 COPY pyproject.toml .
 
 RUN python -m venv /opt/venv && \
-    pip install --no-cache-dir uv~=0.2.33 && \
+    pip install --no-cache-dir uv~=0.2.36 && \
     uv pip install --requirement pyproject.toml --extra dev --no-cache
 
-FROM python:3.12.4-alpine
+FROM python:3.12.5-alpine
 
 ENV PATH="/opt/venv/bin:$PATH"
 

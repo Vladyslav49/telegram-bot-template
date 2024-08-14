@@ -13,18 +13,18 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12.4"
+          python-version: "3.12.5"
 
       - uses: yezz123/setup-uv@v4
         with:
-          uv-version: "0.2.33"
+          uv-version: "0.2.36"
           uv-venv: .venv
 
       - uses: actions/cache@v4
         id: cache-uv
         with:
           path: ~/.cache/uv
-          key: python-${{ runner.os }}-hashFiles("pyproject.toml")-3.12.4-uv
+          key: python-${{ runner.os }}-hashFiles("pyproject.toml")-3.12.5-uv
 
       - name: Install dependencies
         run: uv pip install . --requirement pyproject.toml --all-extras --no-cache
@@ -36,18 +36,18 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12.4"
+          python-version: "3.12.5"
 
       - uses: yezz123/setup-uv@v4
         with:
-          uv-version: "0.2.33"
+          uv-version: "0.2.36"
           uv-venv: .venv
 
       - uses: actions/cache@v4
         id: cache-uv
         with:
           path: ~/.cache/uv
-          key: python-${{ runner.os }}-hashFiles("pyproject.toml")-3.12.4-uv
+          key: python-${{ runner.os }}-hashFiles("pyproject.toml")-3.12.5-uv
 
       - name: Install dependencies
         run: uv pip install . --requirement pyproject.toml --all-extras --no-cache
@@ -67,18 +67,18 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12.4"
+          python-version: "3.12.5"
 
       - uses: yezz123/setup-uv@v4
         with:
-          uv-version: "0.2.33"
+          uv-version: "0.2.36"
           uv-venv: .venv
 
       - uses: actions/cache@v4
         id: cache-uv
         with:
           path: ~/.cache/uv
-          key: python-${{ runner.os }}-hashFiles("pyproject.toml")-3.12.4-uv
+          key: python-${{ runner.os }}-hashFiles("pyproject.toml")-3.12.5-uv
 
       - name: Install dependencies
         run: uv pip install -e . --requirement pyproject.toml --all-extras --no-cache
