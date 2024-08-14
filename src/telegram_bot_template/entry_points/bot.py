@@ -124,16 +124,13 @@ async def close_container(container: AsyncContainer) -> None:
     await container.close()
 
 
-DISPATCHER: Final = get_dispatcher()
-
-
 def main() -> None:
     bot = Bot(
         load_telegram_config().bot_api_token,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
 
-    DISPATCHER.run_polling(bot)
+    get_dispatcher().run_polling(bot)
 
 
 if __name__ == "__main__":
