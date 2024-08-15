@@ -23,7 +23,6 @@ from telegram_bot_template.application.user.commands.create_user import (
     CreateUser,
     CreateUserInputDTO,
 )
-from telegram_bot_template.domain.services.user import UserService
 from telegram_bot_template.domain.value_objects.user_id import UserId
 from telegram_bot_template.entry_points.config_loader import (
     load_database_config,
@@ -31,6 +30,7 @@ from telegram_bot_template.entry_points.config_loader import (
 from telegram_bot_template.entry_points.di import (
     get_command_provider,
     get_database_provider,
+    get_factory_provider,
     get_gateway_provider,
     get_query_provider,
     get_service_provider,
@@ -86,6 +86,7 @@ async def container(
             get_unit_of_work_provider(),
             get_gateway_provider(),
             get_service_provider(),
+            get_factory_provider(),
             get_command_provider(),
             get_query_provider(),
             get_telegram_provider(),
@@ -137,11 +138,10 @@ async def user_id(container: AsyncContainer, telegram_id: int) -> UserId:
 async def make_user_admin(container: AsyncContainer, user_id: UserId) -> None:  # noqa: PT004
     uow = await container.get(UnitOfWork)  # type: ignore[type-abstract]
     user_reader = await container.get(UserReader)  # type: ignore[type-abstract]
-    user_service = await container.get(UserService)
     user_saver = await container.get(UserSaver)  # type: ignore[type-abstract]
 
     async with uow:
         user = await user_reader.acquire_by_id(user_id)
-        user_service.assign_admin_role(user)
+        user.assign_administrator_role()
         await user_saver.save(user)
         await uow.commit()

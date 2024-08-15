@@ -6,8 +6,8 @@ from telegram_bot_template.application.common.db.user import (
     UserSaver,
 )
 from telegram_bot_template.application.common.uow import UnitOfWork
-from telegram_bot_template.application.user.commands.assign_admin_role import (
-    AssignAdminRole,
+from telegram_bot_template.application.user.commands.assign_administrator_role import (  # noqa: E501
+    AssignAdministratorRole,
 )
 from telegram_bot_template.application.user.commands.create_user import (
     CreateUser,
@@ -21,8 +21,8 @@ from telegram_bot_template.application.user.queries.get_current_user import (
 from telegram_bot_template.application.user.queries.get_user_id_by_telegram_id import (  # noqa: E501
     GetUserIdByTelegramId,
 )
+from telegram_bot_template.domain.factories.user import UserFactory
 from telegram_bot_template.domain.services.access import AccessService
-from telegram_bot_template.domain.services.user import UserService
 from telegram_bot_template.infrastructure.db.config import (
     DatabaseConfig,
 )
@@ -72,13 +72,19 @@ def get_gateway_provider() -> Provider:
 
 def get_service_provider() -> Provider:
     provider = Provider(scope=Scope.APP)
-    provider.provide_all(AccessService, UserService)
+    provider.provide(AccessService)
+    return provider
+
+
+def get_factory_provider() -> Provider:
+    provider = Provider(scope=Scope.APP)
+    provider.provide(UserFactory)
     return provider
 
 
 def get_command_provider() -> Provider:
     provider = Provider(scope=Scope.REQUEST)
-    provider.provide_all(CreateUser, AssignAdminRole)
+    provider.provide_all(CreateUser, AssignAdministratorRole)
     return provider
 
 

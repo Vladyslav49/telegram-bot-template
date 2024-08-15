@@ -36,6 +36,7 @@ class GetAllTelegramIds(QueryWithoutInput[tuple[TelegramId, ...]]):
         try:
             self._access_service.ensure_is_administrator(current_user)
         except AccessDenied:
+            assert current_user.id is not None
             logger.warning(
                 "User with ID %s attempted to get all user IDs but is not an administrator",  # noqa: E501
                 current_user.id.to_raw(),

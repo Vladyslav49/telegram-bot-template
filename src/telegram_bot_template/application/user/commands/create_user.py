@@ -10,7 +10,7 @@ from telegram_bot_template.application.common.uow import UnitOfWork
 from telegram_bot_template.application.user.exceptions import (
     UserTelegramIdAlreadyExistsError,
 )
-from telegram_bot_template.domain.services.user import UserService
+from telegram_bot_template.domain.factories.user import UserFactory
 from telegram_bot_template.domain.value_objects.telegram_id import TelegramId
 from telegram_bot_template.domain.value_objects.user_id import UserId
 
@@ -25,23 +25,23 @@ class CreateUserInputDTO:
 
 @final
 class CreateUser(Command[CreateUserInputDTO, UserId]):
-    __slots__ = ("_user_saver", "_user_service", "_uow")
+    __slots__ = ("_user_saver", "_user_factory", "_uow")
 
     def __init__(
         self,
         *,
         user_saver: UserSaver,
-        user_service: UserService,
+        user_factory: UserFactory,
         uow: UnitOfWork,
     ) -> None:
         self._user_saver = user_saver
-        self._user_service = user_service
+        self._user_factory = user_factory
         self._uow = uow
 
     @override  # noqa: vulture
     async def __call__(self, data: CreateUserInputDTO, /) -> UserId:
         async with self._uow:
-            user = self._user_service.create(
+            user = self._user_factory.create(
                 telegram_id=TelegramId(data.telegram_id)
             )
 

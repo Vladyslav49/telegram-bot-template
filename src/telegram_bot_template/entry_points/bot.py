@@ -27,6 +27,7 @@ from telegram_bot_template.entry_points.config_loader import (
 from telegram_bot_template.entry_points.di import (
     get_command_provider,
     get_database_provider,
+    get_factory_provider,
     get_gateway_provider,
     get_query_provider,
     get_service_provider,
@@ -60,6 +61,7 @@ def get_dispatcher() -> Dispatcher:
         get_unit_of_work_provider(),
         get_gateway_provider(),
         get_service_provider(),
+        get_factory_provider(),
         get_command_provider(),
         get_query_provider(),
         get_telegram_provider(),
