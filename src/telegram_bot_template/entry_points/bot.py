@@ -13,7 +13,7 @@ from aiogram_broadcaster import Broadcaster, DefaultMailerSettings
 from aiogram_broadcaster.storages.redis import RedisMailerStorage
 from aiogram_dialog import setup_dialogs
 from aiogram_i18n import I18nMiddleware
-from aiogram_i18n.cores import FluentRuntimeCore
+from aiogram_i18n.cores import FluentCompileCore
 from aiogram_i18n.managers import ConstManager
 from dishka import AsyncContainer, make_async_container
 from dishka.integrations.aiogram import setup_dishka
@@ -80,7 +80,7 @@ def get_dispatcher() -> Dispatcher:
     )
 
     i18n_middleware = I18nMiddleware(
-        FluentRuntimeCore(
+        FluentCompileCore(
             Path(__file__).parent.parent
             / "presentation"
             / "telegram"
