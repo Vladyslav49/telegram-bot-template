@@ -14,6 +14,7 @@
 - [`sqlalchemy`](https://github.com/sqlalchemy/sqlalchemy)
 - [`alembic`](https://github.com/sqlalchemy/alembic)
 - [`dishka`](https://github.com/reagento/dishka)
+- [`adaptix`](https://github.com/reagento/adaptix)
 
 ## 🚀 Getting Started
 
